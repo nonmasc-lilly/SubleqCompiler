@@ -1,0 +1,18 @@
+                === SUBLEQ ===
+        See <https://esolangs.org/wiki/Subleq> for the specification.
+        This Subleq compiler compiles from subleq to x86_64 linux assembly. We shall specify that an address is 16-bits wide, and each address locates
+        a 16 bit word. So that: `0 0 -1` subtracts from the zeroth address itself, and then jumps to negative one (or $FFFF). This subleq compiler assumes
+        that numbers are in twos complement so that: `-1` and `$FFFF` are identical addresses.
+
+        The following IO is mapped:
+        A jump to $FFFF exits the program.
+        A subtraction from $FFFF to an arbitrary address shall output that address to the terminal, the contents of the applied address is unchanged and the
+        ternary operand shall always be jumped to.
+
+        Note that decimal values are any number, prefixed zeroes do not change the meaning of a decimal value. A hexadecimal value is prefixed with `$`.
+
+        In other words:
+
+                A $FFFF C --> OUT(*A); GOTO(C)
+                A B $FFFF --> *A -= *B; IF *A <= 0 THEN EXIT();
+                A B C     --> *A -= *B; IF *A <= 0 THEN GOTO(C);
