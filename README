@@ -16,3 +16,7 @@
                 A $FFFF C --> OUT(*A); GOTO(C)
                 A B $FFFF --> *A -= *B; IF *A <= 0 THEN EXIT();
                 A B C     --> *A -= *B; IF *A <= 0 THEN GOTO(C);
+
+        You may build the compiler with `make` / `make all`, we can test the compiler with `make test`, and you may see the compiler help function
+        by calling it with any sort of invalid arguments, for simplicity's sake: `subleqc`. The outputted program will be in x86_64 linux fasm assembly
+        and may be built with `fasm <outputted name> <final output name>` and then run immediately (the program need not be linked, it is executable).
