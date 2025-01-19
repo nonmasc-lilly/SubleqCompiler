@@ -21,7 +21,7 @@ build/compile.o: src/compile.c
 
 
 test: all FORCE
-	build/subleqc test/minima.subleq test/minima.asm -d
+	build/subleqc test/hi.subleq test/hi.asm -d
 
 clean: FORCE
 	rm build/*.o
